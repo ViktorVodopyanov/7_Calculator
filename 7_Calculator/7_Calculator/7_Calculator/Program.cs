@@ -1,7 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using _7_Calculator.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+string mariadbCS = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<CalculatorContext>(options =>
+{
+    options.UseMySql(mariadbCS, new MySqlServerVersion(new Version(10, 5, 15)));
+});
+
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -13,7 +25,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
