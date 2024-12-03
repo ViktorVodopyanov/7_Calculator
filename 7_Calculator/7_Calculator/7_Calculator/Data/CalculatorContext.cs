@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using _7_Calculator.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace _7_Calculator.Data
 {
