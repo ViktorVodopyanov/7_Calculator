@@ -10,7 +10,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh 'ls -R 7_Calculator'
-                sh 'docker compose build'
+                sh 'docker-compose -f ./7_Calculator/7_Calculator/7_Calculator/docker-compose.yml build'
             }
         }
 		stage('Start Docker Container') {
